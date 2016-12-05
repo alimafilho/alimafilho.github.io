@@ -1,0 +1,21 @@
+/* mixins */
+
+flexbox(flow, wraper)
+	display flex
+	flex-flow flow wraper
+	
+button-social(background-color, url)
+	transition opacity .25s ease-in-out
+	background-color background-color
+	border-radius 5px
+	display inline-block
+	height 31px
+	opacity 1
+	line-height 31px
+	text-align center
+	width 31px
+	&:before
+		content url(url)
+		display inline-block
+	&:hover
+		opacity .8

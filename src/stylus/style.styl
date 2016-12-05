@@ -1,0 +1,355 @@
+
+/* App - style.css
+ * Date: 2016/12/03
+ * Author: Antonio Lima
+ */
+
+/* variables */
+@import "variables"
+
+/* normalize css */
+@import "normalize"
+
+/* grid system */
+@import "grid"
+
+/* import font from google fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin-ext')
+
+.font-primary
+	font-family primary-font
+//font-family "Open Sans"
+//exibir iccone whsts so no mobile
+
+
+.font-secundary
+	font-family secundary-font
+
+.text-center
+	text-align center
+
+body
+	font-family primary-font
+
+.line-separate-horizontal
+	background-color #dadada
+	border 0
+	display inline-block
+	height 1px
+	width 100%
+	margin-top 10px
+	margin-bottom 10px
+
+// style - header
+.header-container
+	position relative
+
+.header-navigation
+	background-color #f3f3f3
+	min-height 45px
+
+.header-content
+	background-color primary-color
+	min-height 70px
+
+.header-wrap
+	background-color #980001
+	height 40px
+	&:before
+		content ""
+		box-shadow -2px 0 3px #8f0000
+		background-color #8f0000
+		display inline-block
+		position absolute
+		width 100%
+		height 3px
+
+// style - header: end
+
+// style - main
+.main-header
+	margin-top 15px
+	margin-bottom 15px
+.main-header__text
+	color #666
+	font-family Arial
+	font-size .75rem
+	font-weight 700
+
+.socialnetworks-btn--facebook
+	button-social(#3b5998, '/build/images/ico_facebook.svg')
+
+.socialnetworks-btn--twitter
+	button-social(#00aced, '/build/images/ico_twitter.svg')
+
+.socialnetworks-btn--whatsapp
+	button-social(#00a500, '/build/images/ico_whatsapp.svg')
+
+.main-title
+	color default-color
+	font-size 2.813rem
+	font-weight 700
+	text-transform uppercase
+
+.main-info
+	align-self flex-end
+
+.main-info__text
+	color default-color
+	font-size 1.125rem
+	font-weight 400
+	line-height 1.563rem
+	margin-bottom 10px
+	max-width 276px
+
+.select-city
+	position relative
+	margin 0 auto
+	max-width 310px
+	width 100%
+
+
+.select-city__title
+	color default-color
+	font-size 1.25rem
+	font-weight 700
+	height 40px
+	line-height 40px
+	padding-left 40px
+	text-transform uppercase
+	margin 0px
+	width 100%
+	&:before
+		content url('/build/images/icon-pin.gif')
+		display inline-block
+		height 39px
+		width 31px
+		position absolute
+		left 0
+		top 0
+
+.select-city__content
+	cursor pointer
+	height 42px
+	margin-top 20px
+	overflow hidden
+	position relative
+	width 100%
+
+.select-city__label
+	border 1px solid #e1e1e1
+	position relative
+	display block
+	&:before
+		content "\276F"
+		width 12px
+		height 12px
+		background-color #ffffff
+		color primary-color
+		display inline-block
+		padding-top 5px
+		transform rotate(90deg)
+		text-align center
+		top 15px
+		right 2px
+		position absolute
+
+.select-city__select
+	border 0
+	color default-color
+	cursor pointer
+	font-size 1.125rem
+	font-weight 400
+	min-height 40px
+	line-height 40px
+	padding-left 20px
+	text-transform uppercase
+	width 100%
+
+.select-turno
+	position relative
+
+.select-turno__title
+	@extend .select-city__title
+	padding-left 70px
+	&:before
+		content url('/build/images/icon-ballot-box.gif')
+		display inline-block
+		height 35px
+		width 67px
+		position absolute
+		left 0
+		top 0
+
+.select-turno__nav
+	display flex
+	list-style none
+	li
+		margin 0
+		padding 0
+		&:first-child
+			.select-turno__btn
+				border-right none
+
+.select-turno__btn
+	border 1px solid #ebebeb
+	color default-color
+	display inline-block
+	font-size 1.125rem
+	font-weight 700
+	height 45px
+	line-height 43px
+	text-align center
+	text-transform uppercase
+	text-decoration none
+	width 135px
+
+.select-turno__btn--active
+	@extend .select-turno__btn
+	color primary-color
+	border-bottom-color primary-color
+
+
+.progressebar__info
+	color default-color
+	font-size 1rem
+	text-transform uppercase
+	b
+		font-weight 700
+
+.progressebar__percentage
+	font-size 1.875rem
+	font-weight 700
+	text-transform uppercase
+	color #2a2a2a
+	margin 0
+
+.progressebar__state
+	margin-bottom 60px
+	height 15px
+	background-color #cccccc
+	overflow hidden
+
+.progressebar__background
+	display block
+	background-color primary-color
+	height 15px
+
+.map-container__header
+	display flex
+	justify-content space-between
+	align-items flex-end
+	margin-top 15px
+.map-container__select
+	max-width 325px
+	width 100%
+
+.map-container__info
+	color default-color
+	font-size 0.688rem
+	font-weight 400
+	position relative
+	padding-left 40px
+	text-transform uppercase
+	align-self flex-end
+	margin 0
+	max-width 190px
+	&:before
+		content url('/build/images/icon-tip.gif')
+		display inline-block
+		height 40px
+		width 30px
+		position absolute
+		left 0
+		top -10px
+
+.map-container__main
+	position relative
+	text-align center
+	margin-top 30px
+	&:after
+		content url('/build/images/icon-legend-shift-1.png')
+		display inline-block
+		height 33px
+		width 157px
+		position absolute
+		right 10%
+		bottom 10px
+
+.map-container__map
+	max-width 430px
+
+.candidates-list
+	list-style none
+	width 100%
+	li
+		border-bottom 1px solid #dadada
+		margin-top 5px
+		margin-bottom 5px
+		&:last-child
+			border-bottom none
+
+.candidates-list__title
+	color default-color
+	font-size 1.3rem
+	margin-top 0
+	margin-bottom 0
+
+.candidates-list__container
+	display flex
+	justify-content space-between
+.candidates-list__picture
+	flex-grow 1
+	span
+		display inline-block
+		height 52px
+		width 52px
+
+.candidates-list__content
+	display flex
+	flex-direction column
+	flex-grow 14
+
+.candidates-list__name
+	color #222
+	font-size 1.25rem
+	font-weight 600
+	line-height 1.063rem
+	margin-top 3px
+	margin-bottom 5px
+
+.candidates-list__sigla
+	color default-color
+	font-size 0.75rem
+
+.candidates-list__votos
+	width 100%
+	height 10px
+	position relative
+	padding 0
+	margin 0
+	span
+		display block
+		height 10px
+		margin 0
+		padding 0
+
+.candidates-list__percentage
+	flex-grow 4
+	font-size 0.75rem
+	color default-color
+	overflow hidden
+	b
+		color #222222
+		font-size 1.563rem
+		line-height 1.063rem
+		font-weight 700
+		display block
+		margin-top 9px
+		margin-bottom 12px
+
+// style - main: end
+
+// footer style
+
+// footer style: end
