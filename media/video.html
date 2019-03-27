@@ -1,0 +1,67 @@
+<html><!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Antonio Lima</title>
+    <link rel="stylesheet" type="text/css" href="build/css/style.css">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+	</head>
+	<body>
+
+		<main role="main">
+			<section class="container main-header">
+				<div class="row">
+					<div class="c-xs-12 c-s-12 c-m-12 c-l-12 main-title text-center">
+            <div id="player" class="embed-responsive embed-responsive-16by9" heigh="100%" width="100%"></div>
+
+            <!-- <video width="320" height="240" controls>
+                <source src="b1a019f61e1a1eb76a68fd597241aea8.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video> -->
+
+          </div>
+				</div>
+			</section>
+		</main>
+
+    <script>
+
+      var player = new Clappr.Player({
+        source: "b1a019f61e1a1eb76a68fd597241aea8.mp4", 
+        parentId: "#player",
+
+        // autoPlay: true,
+        // width: 300,
+        // watermark: "img/vodu.png", position: 'top-right',
+        // playback: {
+        //   preload: 'metadata',
+        //   controls: false,
+        //   playInline: true,
+        //   recycleVideo: Clappr.Browser.isMobile,
+        //   crossOrigin: 'anonymous', // Required if track loaded from another domain
+        //   // externalTracks: [
+        //   //   {lang: 'ar', label: 'Arabic', src: 'http://192.168.98.254/test.webvtt'}
+        //   // ]
+        // }
+      
+      });
+  
+      function resizePlayer(){
+        var aspectRatio = 9/16,
+        newWidth = document.getElementById('player').parentElement.offsetWidth,
+        newHeight = 2 * Math.round(newWidth * aspectRatio/2);
+        player.resize({width: newWidth, height: newHeight});
+      }
+
+      // resizePlayer();
+      // window.onresize = resizePlayer; 
+      
+  </script>
+	</body>
+</html>
+
