@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo 360</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.126.1/build/three.min.js" integrity="sha256-RhW9lLg3YYVh/c3z+9Q8cUD5GFShsH1f7mR0lvCROpk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.126.1/examples/js/controls/OrbitControls.js" integrity="sha256-+ncCNttOcMopCUa47Sn26Tg06ZC2SnWoi/XikKAhnSY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three-x3@0.0.10/dist/x3-standalone.js" integrity="sha256-oKQUM+QPtvuvLmxpqxdxbrJAq21SZ+7hYK8WlGztXNE=" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Create the scene and a camera to view it
+  var scene = new THREE.Scene();
+
+  // Create the canvas with a renderer
+  var renderer = new THREE.WebGLRenderer({antialias: true});
+ 
+  // Specify the size of the canvas
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  /**
+  * Camera
+  **/
+
+  // Specify the portion of the scene visiable at any time (in degrees)
+  var fieldOfView = 75;
+
+  // Specify the camera's aspect ratio
+  var aspectRatio = window.innerWidth / window.innerHeight;
+
+  // Specify the near and far clipping planes. Only objects
+  // between those planes will be rendered in the scene
+  // (these values help control the number of items rendered
+  // at any given time)
+  var nearPlane = 0.1;
+  var farPlane = 1000;
+
+  // Use the values specified above to create a camera
+  var camera = new THREE.PerspectiveCamera(
+    fieldOfView, aspectRatio, nearPlane, farPlane
+  );
+  const controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+  controls.enableRotate = true;
+  controls.enablePan = true;
+  controls.enableDamping = true;
+
+  controls.touches = {
+    ONE: THREE.TOUCH.ROTATE,
+    TWO: THREE.TOUCH.DOLLY_PAN
+  }
+
+  // Finally, set the camera's position in the z-dimension
+
+  camera.position.setFromSphericalCoords(
+    50,
+    THREE.MathUtils.degToRad(70),
+    THREE.MathUtils.degToRad(225)
+  );
+
+  controls.target.set(0,0,0);
+  controls.minDistance = 0.1;
+  controls.maxDistance = 15;
+
+  controls.update();
+  /**
+  * Renderer
+  **/
+
+
+  // Add the canvas to the DOM
+  document.body.appendChild( renderer.domElement );
+
+  /**
+  * Image
+  **/
+
+  // Create a texture loader so we can load our image file
+  var loader = new THREE.TextureLoader();
+
+  // Load an image file into a custom material
+  var material = new THREE.MeshBasicMaterial({map: loader.load('photos/photo-02.jpg'),
+    side: THREE.DoubleSide,  
+  });
+
+  // create a plane geometry for the image with a width of 10
+  // and a height that preserves the image's aspect ratio
+  // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+  const geometry = new THREE.SphereGeometry( 15, 64, 34 );
+  // const geometry = new THREE.SphereBufferGeometry(5, 8, 6, 0, 2*Math.PI, 0, 0.5 * Math.PI);
+  // const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+  const cube = new THREE.Mesh( geometry, material );
+  cube.position.set(0,0,0)
+  scene.add( cube );
+
+
+
+  /**
+  * Render!
+  **/
+
+  // The main animation function that re-renders the scene each animation frame
+  function animate() {
+    requestAnimationFrame( animate );
+    controls.update();
+    renderer.render( scene, camera );
+  }
+  animate();
+
+</script>
+</body>
+</html>
